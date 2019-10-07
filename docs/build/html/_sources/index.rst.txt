@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Hydra Of Python translate's documentation!
+복잡한 애플리케이션을 우아하게 구성하기위한 프레임 워크
 =====================================================
 
 .. toctree::
@@ -58,9 +58,3 @@ Welcome to Hydra Of Python translate's documentation!
 
     Development/*
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
