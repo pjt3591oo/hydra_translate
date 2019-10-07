@@ -23,6 +23,41 @@ Welcome to Hydra Of Python translate's documentation!
 
     Tutorial/*
 
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Common Patterns
+    :glob:
+    :titlesonly:
+
+    CommonPatterns/*
+
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Configuring Hydra
+    :glob:
+    :titlesonly:
+
+    ConfiguringHydra/*
+
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Advanced
+    :glob:
+    :titlesonly:
+
+    Advanced/*
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Development
+    :glob:
+    :titlesonly:
+
+    Development/*
+
 Indices and tables
 ==================
 
