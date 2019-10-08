@@ -103,25 +103,21 @@
 <p class="caption"><span class="caption-text">Common Patterns</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../CommonPatterns/creating onjects.html">객체생성</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CommonPatterns/specializing configuration.html">특별한 설정</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CommonPatterns/specializing configuration.html">전문화된 설정</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Configuring Hydra</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/Customizing logging.html">로깅 커스텀마이징</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/Customizing working directory pattern.html">작업 디렉터리 커스텀마이징 패턴</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/Hydra configuration.html">히드라 설정</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/intruduction.html">소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/Hydra configuration.html#id2">실행중 가변인자</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/introduction.html">소개</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Advanced</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Application packaging.html">어플리케이션 패키징</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">설정파일 경로</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hydra plugin.html">히드라 플러그인</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Development</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../Development/Release process.html">릴리즈 프로세스</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Development/contributing.html">기여</a></li>
 </ul>
 
             
@@ -188,6 +184,11 @@
             
   <div class="section" id="id1">
 <h1>설정파일 경로<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>히드라는 객체로 구성된 설정 파일을 찾기위해 경로 접근방식을 사용합니다. <code class="docutils literal notranslate"><span class="pre">SearchPathPlugin</span></code>은 검색경로를 제어할 수 있습니다.</p>
+<p>히드라 로거의 세부 로깅을 켜서 히드라에 의해 로드된 검색 경로와 구성을 검사할 수 있습니다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python my_app.py hydra.verbose<span class="o">=</span>hydra
+</pre></div>
+</div>
 </div>
 
 

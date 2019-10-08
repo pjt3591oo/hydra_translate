@@ -50,11 +50,5 @@
 
     Advanced/*
 
-.. toctree::
-    :maxdepth: 2
-    :caption: Development
-    :glob:
-    :titlesonly:
 
-    Development/*
 

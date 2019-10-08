@@ -38,7 +38,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="설정파일 경로" href="Config search path.html" />
-    <link rel="prev" title="소개" href="../ConfiguringHydra/intruduction.html" /> 
+    <link rel="prev" title="소개" href="../ConfiguringHydra/introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -103,25 +103,21 @@
 <p class="caption"><span class="caption-text">Common Patterns</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../CommonPatterns/creating onjects.html">객체생성</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CommonPatterns/specializing configuration.html">특별한 설정</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CommonPatterns/specializing configuration.html">전문화된 설정</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Configuring Hydra</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/Customizing logging.html">로깅 커스텀마이징</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/Customizing working directory pattern.html">작업 디렉터리 커스텀마이징 패턴</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/Hydra configuration.html">히드라 설정</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/intruduction.html">소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/Hydra configuration.html#id2">실행중 가변인자</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/introduction.html">소개</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Advanced</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">어플리케이션 패키징</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Config search path.html">설정파일 경로</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hydra plugin.html">히드라 플러그인</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Development</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../Development/Release process.html">릴리즈 프로세스</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Development/contributing.html">기여</a></li>
 </ul>
 
             
@@ -188,6 +184,28 @@
             
   <div class="section" id="id1">
 <h1>어플리케이션 패키징<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>당신은 설정과 함께 패키징할 수 있습니다. 이것은 예시는 <a class="reference external" href="https://github.com/facebookresearch/hydra/tree/master/examples/advanced/hydra_app_example">여기</a>있습니다.</p>
+<p>당신은 해당 코드와 함께 실행할 수 있습니다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python examples/advanced/hydra_app_example/hydra_app/main.py
+dataset:
+  name: imagenet
+  path: /datasets/imagenet
+</pre></div>
+</div>
+<p>그것을 설치하려면 다음을 사용하세요</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install examples/advanced/hydra_app_example
+...
+Successfully installed hydra-app-0.1
+</pre></div>
+</div>
+<p>설치된 앱 사용하기</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ hydra_app
+dataset:
+  name: imagenet
+  path: /datasets/imagenet
+</pre></div>
+</div>
+<p>설치된 앱은 패키징된 설정파일을 사용합니다.</p>
 </div>
 
 
@@ -201,7 +219,7 @@
         <a href="Config search path.html" class="btn btn-neutral float-right" title="설정파일 경로" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../ConfiguringHydra/intruduction.html" class="btn btn-neutral float-left" title="소개" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../ConfiguringHydra/introduction.html" class="btn btn-neutral float-left" title="소개" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

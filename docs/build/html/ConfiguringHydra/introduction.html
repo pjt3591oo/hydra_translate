@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>로깅 커스텀마이징 &mdash; Hydra Of Python translate 1.0 documentation</title>
+  <title>소개 &mdash; Hydra Of Python translate 1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="작업 디렉터리 커스텀마이징 패턴" href="Customizing working directory pattern.html" />
-    <link rel="prev" title="전문화된 설정" href="../CommonPatterns/specializing configuration.html" /> 
+    <link rel="next" title="어플리케이션 패키징" href="../Advanced/Application packaging.html" />
+    <link rel="prev" title="히드라 설정" href="Hydra configuration.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -107,11 +107,11 @@
 </ul>
 <p class="caption"><span class="caption-text">Configuring Hydra</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">로깅 커스텀마이징</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Customizing logging.html">로깅 커스텀마이징</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Customizing working directory pattern.html">작업 디렉터리 커스텀마이징 패턴</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hydra configuration.html">히드라 설정</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hydra configuration.html#id2">실행중 가변인자</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">소개</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">소개</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Advanced</span></p>
 <ul>
@@ -163,13 +163,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>로깅 커스텀마이징</li>
+      <li>소개</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/ConfiguringHydra/Customizing logging.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/ConfiguringHydra/introduction.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -183,48 +183,40 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>로깅 커스텀마이징<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>히드라는 dictConfig 함수와 함께 파이썬 표준 로깅 라이프러리를 설정한다. 당신은 <a class="reference external" href="https://docs.python.org/3/howto/logging.html">여기서</a> 더 많은것을 배울 수 있습니다. 두 가지 로깅 설정을 가지고 있으며, 한 가지는 히드라를 위한 것이며, 다른 한 가지는 실행중인 작업을 위한것 입니다.</p>
-<p>이 예제는 다음과 같이 기본 로깅 동작을 변경하여 히드라 앱의 로깅동작시 사용자 지정 방식입니다.</p>
-<ul class="simple">
-<li><p>stdout에만 출력(파일생성 하지 않음)</p></li>
-<li><p>보다 간단한 로그 라인 패턴 출력</p></li>
-</ul>
-<p>프로젝트 구성:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tree
-├── conf
-│   ├── config.yaml
-│   └── hydra
-│       └── job_logging
-│           └── custom.yaml
-└── main.py
-</pre></div>
+<h1>소개<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>히드라 설정<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>히드라는 사용자가 원하는 형태로 설정할 수 있습니다. 다음과 같은 순서로 구성되어 있습니다.</p>
+<div class="section" id="id3">
+<h3>패키지에서 기본설정<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>이 구성은 히드라 코드로부터 제공되며, 사용자로부터 직접적인 변경은 불가능 합니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">범위:</span> <span class="pre">전역</span></code>은 히드라의 모든 실행들이 영향을 미치고 있으며, 히드라 설정을 구성하는데 가장 먼저 사용되는 것 입니다.</p>
 </div>
-<p>config.yaml은 기본적으로 애플리케이션을 사용자 정의 로깅으로 설정합니다.</p>
-<p>설정파일: <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">hydra/job_logging </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">custom</span>
-</pre></div>
+<div class="section" id="job-config-config-yaml">
+<h3>job config(config.yaml)<a class="headerlink" href="#job-config-config-yaml" title="Permalink to this headline">¶</a></h3>
+<p>작업 설정을 통해 히드라를 직접 설정할 수 있습니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">범위:</span> <span class="pre">히드라</span> <span class="pre">응용프로그램</span></code></p>
 </div>
-<p>설정파일: <code class="docutils literal notranslate"><span class="pre">hydra/job_logging/logging.yaml</span></code></p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hydra</span><span class="p">:</span>
-  <span class="nt">job_logging</span><span class="p">:</span>
-    <span class="nt">formatters</span><span class="p">:</span>
-      <span class="nt">simple</span><span class="p">:</span>
-        <span class="nt">format</span><span class="p">:</span> <span class="s">&#39;[%(levelname)s]</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">%(message)s&#39;</span>
-    <span class="nt">root</span><span class="p">:</span>
-      <span class="nt">handlers</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">console</span><span class="p p-Indicator">]</span>
-</pre></div>
+<div class="section" id="command-line-arguments">
+<h3>Command line arguments<a class="headerlink" href="#command-line-arguments" title="Permalink to this headline">¶</a></h3>
+<p>커맨드 라인 인자는 히드라 설정을 재정의 할 수 있스빈다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">범위:</span> <span class="pre">실행된</span> <span class="pre">하나의</span> <span class="pre">응용프로그램</span></code></p>
 </div>
-<p>기본 로깅은 다음과 같습니다.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python main.py hydra/job_logging<span class="o">=</span>default
-<span class="o">[</span><span class="m">2019</span>-09-26 <span class="m">18</span>:58:05,477<span class="o">][</span>__main__<span class="o">][</span>INFO<span class="o">]</span> - Info level message
-</pre></div>
 </div>
-<p>그리고 이것은 사용자 지정 로깅입니다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python main.py
-[INFO] - Info level message
-</pre></div>
+<div class="section" id="id4">
+<h2>커스텀 마이징 예시<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="working-directories">
+<h3>작업 디렉터리(Working directories)<a class="headerlink" href="#working-directories" title="Permalink to this headline">¶</a></h3>
+<p>작업 출력 디렉터리는 로컬 및 클러스터 실행을 위해  커스텀마이징할 수 있습니다.</p>
+</div>
+<div class="section" id="logging">
+<h3>로깅(Logging)<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h3>
+<p>로깅 기본값은 대부분의 사용 사례에 충분해야 하지만, 당신의 프로젝트를 위한 로깅을 정의하여 사용할 수 있습니다.</p>
+</div>
+<div class="section" id="plugins">
+<h3>플러그인(Plugins)<a class="headerlink" href="#plugins" title="Permalink to this headline">¶</a></h3>
+<p>많은 플러그인들은 설정을 요청합니다. 각각의 플러그인 문서를 통해 플러그인 설정방법을 볼 수 있습니다.</p>
+</div>
 </div>
 </div>
 
@@ -236,10 +228,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="Customizing working directory pattern.html" class="btn btn-neutral float-right" title="작업 디렉터리 커스텀마이징 패턴" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Advanced/Application packaging.html" class="btn btn-neutral float-right" title="어플리케이션 패키징" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../CommonPatterns/specializing configuration.html" class="btn btn-neutral float-left" title="전문화된 설정" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Hydra configuration.html" class="btn btn-neutral float-left" title="히드라 설정" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
