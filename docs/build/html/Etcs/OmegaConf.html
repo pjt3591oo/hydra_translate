@@ -190,6 +190,324 @@
   <div class="section" id="omegaconf">
 <h1>OmegaConf<a class="headerlink" href="#omegaconf" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://omegaconf.readthedocs.io/en/latest/usage.html#access-and-manipulation">공식문서</a></p>
+<div class="section" id="id1">
+<h2>설치<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>pip 이용한 설치</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install omegaconf
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>생성<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>빈값<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; from omegaconf import OmegaConf
+&gt;&gt;&gt; <span class="nv">conf</span> <span class="o">=</span> OmegaConf.create<span class="o">()</span>
+&gt;&gt;&gt; print<span class="o">(</span>conf.pretty<span class="o">())</span>
+<span class="o">{}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>딕셔너리를 이용한 생성<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; <span class="nv">conf</span> <span class="o">=</span> OmegaConf.create<span class="o">(</span>dict<span class="o">(</span><span class="nv">k</span><span class="o">=</span><span class="s1">&#39;v&#39;</span>,list<span class="o">=[</span><span class="m">1</span>,dict<span class="o">(</span><span class="nv">a</span><span class="o">=</span><span class="s1">&#39;1&#39;</span>,b<span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="o">)]))</span>
+&gt;&gt;&gt; print<span class="o">(</span>conf.pretty<span class="o">())</span>
+k: v
+list:
+- <span class="m">1</span>
+- a: <span class="s1">&#39;1&#39;</span>
+  b: <span class="s1">&#39;2&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>리스트를 이용한 생성<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; <span class="nv">conf</span> <span class="o">=</span> OmegaConf.create<span class="o">([</span><span class="m">1</span>, dict<span class="o">(</span><span class="nv">a</span><span class="o">=</span><span class="m">10</span>, <span class="nv">b</span><span class="o">=</span>dict<span class="o">(</span><span class="nv">a</span><span class="o">=</span><span class="m">10</span><span class="o">))])</span>
+&gt;&gt;&gt; print<span class="o">(</span>conf.pretty<span class="o">())</span>
+- <span class="m">1</span>
+- a: <span class="m">10</span>
+  b:
+    a: <span class="m">10</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="yaml">
+<h3>yaml 파일을 이용한 생성<a class="headerlink" href="#yaml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; <span class="nv">conf</span> <span class="o">=</span> OmegaConf.load<span class="o">(</span><span class="s1">&#39;source/example.yaml&#39;</span><span class="o">)</span>
+&gt;&gt;&gt; <span class="c1"># Output is identical to the yaml file</span>
+&gt;&gt;&gt; print<span class="o">(</span>conf.pretty<span class="o">())</span>
+log:
+  file: ???
+  rotation: <span class="m">3600</span>
+server:
+  port: <span class="m">80</span>
+users:
+- user1
+- user2
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>yaml 문자열을 이용한 생성<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; <span class="nv">conf</span> <span class="o">=</span> OmegaConf.create<span class="o">(</span><span class="s2">&quot;a: b\nb: c\nlist:\n- item1\n- item2\n&quot;</span><span class="o">)</span>
+&gt;&gt;&gt; print<span class="o">(</span>conf.pretty<span class="o">())</span>
+a: b
+b: c
+list:
+- item1
+- item2
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>점으로 구분된 아이템으로 이루어진 리스트를 이용한 생성<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; <span class="nv">dot_list</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;a.aa.aaa=1&quot;</span>, <span class="s2">&quot;a.aa.bbb=2&quot;</span>, <span class="s2">&quot;a.bb.aaa=3&quot;</span>, <span class="s2">&quot;a.bb.bbb=4&quot;</span><span class="o">]</span>
+&gt;&gt;&gt; <span class="nv">conf</span> <span class="o">=</span> OmegaConf.from_dotlist<span class="o">(</span>dot_list<span class="o">)</span>
+&gt;&gt;&gt; print<span class="o">(</span>conf.pretty<span class="o">())</span>
+a:
+  aa:
+    aaa: <span class="m">1</span>
+    bbb: <span class="m">2</span>
+  bb:
+    aaa: <span class="m">3</span>
+    bbb: <span class="m">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>커맨드라인 인자를 이용한 생성<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; <span class="c1"># Simulating command line arguments</span>
+&gt;&gt;&gt; sys.argv <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;your-program.py&#39;</span>, <span class="s1">&#39;server.port=82&#39;</span>, <span class="s1">&#39;log.file=log2.txt&#39;</span><span class="o">]</span>
+&gt;&gt;&gt; <span class="nv">conf</span> <span class="o">=</span> OmegaConf.from_cli<span class="o">()</span>
+&gt;&gt;&gt; print<span class="o">(</span>conf.pretty<span class="o">())</span>
+log:
+  file: log2.txt
+server:
+  port: <span class="m">82</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>접근, 조작<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>이 색션을 위해 사용하는 yaml 파일입니다.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">server</span><span class="p">:</span>
+  <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="nt">log</span><span class="p">:</span>
+  <span class="nt">file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">???</span>
+  <span class="nt">rotation</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3600</span>
+<span class="nt">users</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user1</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user2</span>
+</pre></div>
+</div>
+<div class="section" id="id10">
+<h3>접근<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># object style access of dictionary elements</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">port</span>
+<span class="go">80</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># dictionary style access</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="s1">&#39;rotation&#39;</span><span class="p">]</span>
+<span class="go">3600</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># items in list</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">users</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;user1&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>기본값<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>당신은 코드에서 해당값에 직접적으로 접근하여 기본값을 제공할 수 있습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># providing default values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">missing_key</span> <span class="ow">or</span> <span class="s1">&#39;a default value&#39;</span>
+<span class="go">&#39;a default value&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;missing_key&#39;</span><span class="p">,</span> <span class="s1">&#39;a default value&#39;</span><span class="p">)</span>
+<span class="go">&#39;a default value&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>의무적인 값<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>값 사용?? 접근하기 전에 설정해야 하는 매개변수를 지시합니다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; conf.log.file
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+...
+omegaconf.MissingMandatoryValue: log.file
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>조작<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Changing existing keys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="mi">81</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Adding new keys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">hostname</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Adding a new dictionary</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">database</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hostname&#39;</span><span class="p">:</span> <span class="s1">&#39;database01&#39;</span><span class="p">,</span> <span class="s1">&#39;port&#39;</span><span class="p">:</span> <span class="mi">3306</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>변수 보간<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<p>보간된 변수는 설정안의 다른 지점에서 점을 이용하여 경로를 설정할 수 있고, 이 경우 이 값은 다른 노드의 값이 됩니다.</p>
+<p>입력되는 yaml 파일:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>server:
+  host: localhost
+  port: <span class="m">80</span>
+
+client:
+  url: http://<span class="si">${</span><span class="nv">server</span><span class="p">.host</span><span class="si">}</span>:<span class="si">${</span><span class="nv">server</span><span class="p">.port</span><span class="si">}</span>/
+  server_port: <span class="si">${</span><span class="nv">server</span><span class="p">.port</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>예제:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;source/config_interpolation.yaml&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Primitive interpolation types are inherited from the referenced value</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">server_port</span><span class="p">)</span>
+<span class="go">80</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">server_port</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">int</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Composite interpolation types are always string</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+<span class="go">http://localhost:80/</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="go">str</span>
+</pre></div>
+</div>
+<div class="section" id="id15">
+<h3>환경변수 보간<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p>환경변수 보간도 제공합니다.</p>
+<p>입력되는 yaml 파일:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>user:
+  name: <span class="si">${</span><span class="nv">env</span><span class="p">:</span><span class="nv">USER</span><span class="si">}</span>
+  home: /home/<span class="si">${</span><span class="nv">env</span><span class="p">:</span><span class="nv">USER</span><span class="si">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;source/env_interpolation.yaml&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="go">omry</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">home</span><span class="p">)</span>
+<span class="go">/home/omry</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>사용자 정의 보간<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>당신은 사용자 정의 resolver를 사용하여 보간타입을 추가할 수 있습니다. 이 예제는 전달한 값에 10을 더하는 resolver를 생성합니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">register_resolver</span><span class="p">(</span><span class="s2">&quot;plus_10&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">create</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;${plus_10:990}&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">key</span>
+<span class="go">1000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>설정 합치기<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<p>설정을 합치면 작업의 각 변동에 맞춰 논리 구성요소에 맞는 설정 파일을 재구성할 수 있습니다.</p>
+<p>머신러닝 표현식 예제:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">base_cfg</span><span class="p">,</span> <span class="n">model_cfg</span><span class="p">,</span> <span class="n">optimizer_cfg</span><span class="p">,</span> <span class="n">dataset_cfg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>웹 서버 설정 예제:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">server_cfg</span><span class="p">,</span> <span class="n">plugin1_cfg</span><span class="p">,</span> <span class="n">site1_cfg</span><span class="p">,</span> <span class="n">site2_cfg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>다음 예제는 파일에서 두 개의 설정, cli에서 하나의 설정을 생성합니다.</p>
+<p>example2.yaml 파일:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">server</span><span class="p">:</span>
+  <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="nt">users</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user1</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user2</span>
+</pre></div>
+</div>
+<p>example3.yaml 파일:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">log</span><span class="p">:</span>
+  <span class="nt">file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">log.txt</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">omegaconf</span> <span class="kn">import</span> <span class="n">OmegaConf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">base_conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;source/example2.yaml&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">second_conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;source/example3.yaml&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Merge configs:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">base_conf</span><span class="p">,</span> <span class="n">second_conf</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Simulate command line arguments</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;program.py&#39;</span><span class="p">,</span> <span class="s1">&#39;server.port=82&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Merge with cli arguments</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">merge_with_cli</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">conf</span><span class="o">.</span><span class="n">pretty</span><span class="p">())</span>
+<span class="go">log:</span>
+<span class="go">  file: log.txt</span>
+<span class="go">server:</span>
+<span class="go">  port: 82</span>
+<span class="go">users:</span>
+<span class="go">- user1</span>
+<span class="go">- user2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id18">
+<h2>플래그 설정<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>참고: 플래그는 1.3.0 버전(이전버전)에 새로 추가된 요소입니다. API는 안정성을 고려하지 않고, 1.3.0이 출시되기 전에 변경될 수 있습니다.</p>
+</div></blockquote>
+<p>OmegaConf는 몇개의 설정 플래그를 제공합니다. 플래그 설정은 모든 노드의 설정에서 플래그를 설정할 수 있습니다. 만약 플래그 설정이 안 됬을 경우, 부모노드로 부터 값을 상속받습니다. 루트노드에서 상속된 기본값은 항상 거짓입니다.</p>
+<div class="section" id="id19">
+<h3>읽기 전용 플래그<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<p>읽기 전용 설정이 된 플래그는 수정할 수 없습니다. 수정을 시도할 경우 <code class="docutils literal notranslate"><span class="pre">omegaconf.ReadonlyConfigError</span> </code> 익셉션을 발생합니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">set_readonly</span><span class="p">(</span><span class="n">conf</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">omegaconf.ReadonlyConfigError</span>: <span class="n">a.b</span>
+</pre></div>
+</div>
+<p>당신은 설정객체로 부터 읽기 전용 플래그 기능을 지울 수 있습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">omegaconf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">10</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">set_readonly</span><span class="p">(</span><span class="n">conf</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">omegaconf</span><span class="o">.</span><span class="n">read_write</span><span class="p">(</span><span class="n">conf</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="n">conf</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">b</span>
+<span class="go">20</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id20">
+<h3>플래그 구조<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<p>기본값에 의해, OmegaConf 디셔너리는 정의되지 않은 필드를 읽고 쓰는것을 허용합니다. 만약 필드가 존재하지않는다면, None을 반환하거나 새로운 필드를 생성합니다. 이 행동을 변화하는 것은 가끔 도움됩니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">aa</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">bb</span><span class="o">=</span><span class="mi">20</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">set_struct</span><span class="p">(</span><span class="n">conf</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">cc</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">KeyError</span>: <span class="n">&#39;Accessing unknown key in a struct : a.cc&#39;</span>
+</pre></div>
+</div>
+<p>당신은 설정객체로 부터 플래그의 구조를 지울 수 있습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">omegaconf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">aa</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">bb</span><span class="o">=</span><span class="mi">20</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">OmegaConf</span><span class="o">.</span><span class="n">set_struct</span><span class="p">(</span><span class="n">conf</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">omegaconf</span><span class="o">.</span><span class="n">open_dict</span><span class="p">(</span><span class="n">conf</span><span class="p">):</span>
+<span class="gp">... </span>  <span class="n">conf</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">cc</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conf</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">cc</span>
+<span class="go">30</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
