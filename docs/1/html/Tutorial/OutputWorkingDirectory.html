@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>출력 / 작업 디렉터리 &mdash; Hydra Of Python translate V0.9.0 0.9.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="로깅" href="Logging.html" />
+    <link rel="prev" title="탭 자동완성" href="TabCompletion.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Hydra Of Python translate V0.9.0
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../About/Introduction.html">소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/GettingStarted.html">시작하기</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="SimpleCommandLineApplication.html">간단한 명령 프로그램</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConfigurationFile.html">설정파일</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConfigGroups.html">설정 그룹(Config groups)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Default.html">기본값</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConfigComposition.html">설정 컴포지션</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MultiRun.html">다중실행</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TabCompletion.html">탭 자동완성</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">출력 / 작업 디렉터리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Logging.html">로깅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Debugging.html">디버깅</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common Patterns</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CommonPatterns/CreatingObjects.html">객체생성</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CommonPatterns/SpecializingConfiguration.html">전문화된 설정</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuring Hydra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/Introduction.html">소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/HydraConfiguration.html">히드라 설정</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/HydraConfiguration.html#id2">실행중 가변인자</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/CustomizingLogging.html">로깅 커스텀마이징</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/CustomizingWorkingDirectoryPattern.html">작업 디렉터리 커스텀마이징 패턴</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/ApplicationPackaging.html">어플리케이션 패키징</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/ConfigSearchPath.html">설정파일 경로</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/HydraPlugin.html">히드라 플러그인</a></li>
+</ul>
+<p class="caption"><span class="caption-text">기타 라이브러리</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Etcs/OmegaConf.html">OmegaConf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Etcs/Logging.html">Logging</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Hydra Of Python translate V0.9.0</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>출력 / 작업 디렉터리</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Tutorial/OutputWorkingDirectory.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>출력 / 작업 디렉터리<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>히드라는 각 실행에 대한 디렉토리를 생성하고 해당 디렉토리 내에서 코드를 실행하여 각 실행에 대해 새 출력 디렉토리를 지정해야하는 문제를 해결합니다.</p>
+<p>작업 디렉터리는 다음을 수행하는데 사용합니다.</p>
+<ul class="simple">
+<li><p>응용프로그램 출력물 저장(예. 데이터베이스 덤프파일)</p></li>
+<li><p>실행을 위한 히드라 출력 저장(설정구성, 로그 등)</p></li>
+</ul>
+<p>당신이 매번 앱을 실행할 때, 새로운 디렉터리를 자동으로 생성합니다.</p>
+<p>파이썬 파일: <code class="docutils literal notranslate"><span class="pre">my_app.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import os
+@hydra.main()
+def my_app(_cfg):
+    print(&quot;Working directory : {}&quot;.format(os.getcwd()))
+$ python my_app.py
+Working directory : /home/omry/dev/hydra/outputs/2019-09-25/15-16-17
+$ python my_app.py
+Working directory : /home/omry/dev/hydra/outputs/2019-09-25/15-16-19
+</pre></div>
+</div>
+<p>해당 작업디렉터리중 하나를 살펴보겠습니다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tree outputs/2019-09-25/15-16-17
+outputs/2019-09-25/15-16-17
+├── .hydra
+│   ├── config.yaml
+│   ├── hydra.yaml
+│   └── overrides.yaml
+└── my_app.log
+</pre></div>
+</div>
+<p>우리는 히드라 출력 디렉터리(기본값에 의한 <code class="docutils literal notranslate"><span class="pre">.hydra</span></code>)와 어플리케이션 로그 파일을 가지고 있습니다. 구성 출력 디렉터리는 다음과 같습니다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>:  사용자 지정 구성의 덤프</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hydra.yaml</span></code>: 히드라 구성의 덤프</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ovverides.yaml</span></code>: 오버라이드에 사용된 명령어</p></li>
+</ul>
+<p>그리고 메인 출력 디렉터리</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">my_app.log</span></code>: 이 실행을 위해 생성된 로그파일</p></li>
+</ul>
+<p>워킹 디렉터리는 <a class="reference external" href="https://cli.dev/docs/configure_hydra/workdir/">커스텀마이징</a> 할 수 있습니다.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Logging.html" class="btn btn-neutral float-right" title="로깅" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="TabCompletion.html" class="btn btn-neutral float-left" title="탭 자동완성" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, pjt3591oo
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
