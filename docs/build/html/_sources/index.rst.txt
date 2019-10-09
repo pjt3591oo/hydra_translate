@@ -73,5 +73,14 @@
     Advanced/ConfigSearchPath.md
     Advanced/HydraPlugin.md
 
+.. toctree::
+    :maxdepth: 2
+    :caption: 기타 라이브러리
+    :glob:
+    :titlesonly:
+
+    Etcs/OmegaConf.md
+    Etcs/Logging.md
+
 
 

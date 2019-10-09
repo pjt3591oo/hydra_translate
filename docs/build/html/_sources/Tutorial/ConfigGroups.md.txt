@@ -16,7 +16,7 @@ def my_app(cfg):
     print(cfg.pretty())
 ```
 
-`config_path`는 [Tutorial-Simple command line example](./ Tutorial-Simple command line allication.md)과 같이 설정 파일을 지정할 수 있습니다. 만약 `config_path`가 지정된 경우 그것은 최상위 디렉터리가 됩니다.
+`config_path`는 [Tutorial-Simple command line example](https://cli.dev/docs/tutorial/simple_cli/)과 같이 설정 파일을 지정할 수 있습니다. 만약 `config_path`가 지정된 경우 그것은 최상위 디렉터리가 됩니다.
 
 우리의 프로그램 디렉터리 구조는 보이는바와 같습니다.
 
