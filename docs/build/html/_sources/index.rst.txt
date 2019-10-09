@@ -58,7 +58,7 @@
     :glob:
     :titlesonly:
 
-    ConfiguringHydra/Intro.md
+    ConfiguringHydra/Introduction.md
     ConfiguringHydra/HydraConfiguration.md
     ConfiguringHydra/CustomizingLogging.md
     ConfiguringHydra/CustomizingWorkingDirectoryPattern.md
