@@ -23,12 +23,12 @@ source_parsers = {
 
 # -- Project information -----------------------------------------------------
 
-project = 'Hydra Of Python translate'
+project = 'Hydra Of Python translate V0.9.0'
 copyright = '2019, pjt3591oo'
 author = 'pjt3591oo'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0'
+release = '0.9.0'
 
 
 # -- General configuration ---------------------------------------------------

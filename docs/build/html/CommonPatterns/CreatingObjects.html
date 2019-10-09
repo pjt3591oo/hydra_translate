@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>객체생성 &mdash; Hydra Of Python translate V0.9.0 0.9.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="전문화된 설정" href="SpecializingConfiguration.html" />
+    <link rel="prev" title="디버깅" href="../Tutorial/Debugging.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Hydra Of Python translate V0.9.0
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../About/Introduction.html">소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../About/GettingStarted.html">시작하기</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/SimpleCommandLineApplication.html">간단한 명령 프로그램</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ConfigurationFile.html">설정파일</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ConfigGroups.html">설정 그룹(Config groups)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Default.html">기본값</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/ConfigComposition.html">설정 컴포지션</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/MultiRun.html">다중실행</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/TabCompletion.html">탭 자동완성</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/OutputWorkingDirectory.html">출력 / 작업 디렉터리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Logging.html">로깅</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorial/Debugging.html">디버깅</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common Patterns</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">객체생성</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SpecializingConfiguration.html">전문화된 설정</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Configuring Hydra</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/Introduction.html">소개</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/HydraConfiguration.html">히드라 설정</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/HydraConfiguration.html#id2">실행중 가변인자</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/CustomizingLogging.html">로깅 커스텀마이징</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ConfiguringHydra/CustomizingWorkingDirectoryPattern.html">작업 디렉터리 커스텀마이징 패턴</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/ApplicationPackaging.html">어플리케이션 패키징</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/ConfigSearchPath.html">설정파일 경로</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/HydraPlugin.html">히드라 플러그인</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Hydra Of Python translate V0.9.0</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>객체생성</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/CommonPatterns/CreatingObjects.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>객체생성<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>응용프로그램에서 다른 동작을 수행하는 가장 좋은방법은 인터페이스 구현을 인스턴스화하는 것 입니다.</p>
+<p>한 데이터베이스 인터페이스는 다른 데이터베이스 드라이버에 의해 구현된 <code class="docutils literal notranslate"><span class="pre">connect()</span></code> 메서드를 가집니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DBConnection</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+<span class="k">class</span> <span class="nc">MySQLConnection</span><span class="p">(</span><span class="n">DBConnection</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">user</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">password</span>
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span>
+            <span class="s2">&quot;MySQL connecting to {} with user={} and password={}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+<span class="k">class</span> <span class="nc">PostgreSQLConnection</span><span class="p">(</span><span class="n">DBConnection</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">database</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">user</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">password</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">database</span> <span class="o">=</span> <span class="n">database</span>
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span>
+            <span class="s2">&quot;PostgreSQL connecting to {} &quot;</span>
+            <span class="s2">&quot;with user={} and password={} and database={}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">database</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<p>이것을 제공하기 위해, 우리는 우리는 병렬적인 설정구조를 가질 수 있습니다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conf/
+├── config.yaml
+└── db
+    ├── mysql.yaml
+    └── postgresql.yaml
+</pre></div>
+</div>
+<p>설정파일: <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">defaults</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">db</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mysql</span>
+</pre></div>
+</div>
+<p>설정파일: <code class="docutils literal notranslate"><span class="pre">db.mysql.yaml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">model</span><span class="p">:</span>
+<span class="nt">db</span><span class="p">:</span>
+  <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tutorial.objects_example.objects.MySQLConnection</span>
+  <span class="nt">params</span><span class="p">:</span>
+    <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1234</span>
+</pre></div>
+</div>
+<p>설정파일: <code class="docutils literal notranslate"><span class="pre">db/postgresql.yaml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">db</span><span class="p">:</span>
+  <span class="nt">class</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tutorial.objects_example.objects.PostgreSQLConnection</span>
+  <span class="nt">params</span><span class="p">:</span>
+    <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span>
+    <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="nt">password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1234</span>
+    <span class="nt">database</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tutorial</span>
+</pre></div>
+</div>
+<p>이를통해, 당신은 한줄의 코드로 객체를 인스턴스화 할 수 있습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@hydra.main</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;conf/config.yaml&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_app</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
+    <span class="n">connection</span> <span class="o">=</span> <span class="n">hydra</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">instantiate</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">db</span><span class="p">)</span>
+    <span class="n">connection</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>MySQL은 파일에 따라 <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code>의 기본값 입니다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python my_app.py
+MySQL connecting to localhost with <span class="nv">user</span><span class="o">=</span>root and <span class="nv">password</span><span class="o">=</span><span class="m">1234</span>
+</pre></div>
+</div>
+<p>인스턴스화 된 객체 클래스를 변경하고 커맨드라인에서 값을 재정의 하세요.</p>
+<div class="highlight-base notranslate"><div class="highlight"><pre><span></span>$ python my_app.py db=postgresql db.params.password=abcde
+PostgreSQL connecting to localhost with user=root and password=abcde and database=tutorial
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SpecializingConfiguration.html" class="btn btn-neutral float-right" title="전문화된 설정" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../Tutorial/Debugging.html" class="btn btn-neutral float-left" title="디버깅" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, pjt3591oo
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

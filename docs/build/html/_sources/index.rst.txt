@@ -6,23 +6,42 @@
 복잡한 애플리케이션을 우아하게 구성하기위한 프레임 워크
 =====================================================
 
+해당 문서는 hydra_ **0.9.0 버전** 기준으로 작성된 문서입니다.
+
+* 번역자: 박정태_
+
+* 저장소: 여기_
+
+.. _박정태: https://github.com/pjt3591oo
+.. _여기: https://github.com/pjt3591oo/hydra_translate
+.. _hydra: https://cli.dev/docs/intro
+
 .. toctree::
     :maxdepth: 2
     :caption: About
     :glob:
     :titlesonly:
 
-    About/*
+    About/Introduction.md
+    About/GettingStarted.md
     
-
 .. toctree::
     :maxdepth: 2
     :caption: Tutorial
     :glob:
     :titlesonly:
 
-    Tutorial/*
-
+    Tutorial/SimpleCommandLineApplication.md
+    Tutorial/ConfigurationFile.md
+    Tutorial/ConfigGroups.md
+    Tutorial/Default.md
+    Tutorial/ConfigComposition.md
+    Tutorial/MultiRun.md
+    Tutorial/TabCompletion.md
+    Tutorial/OutputWorkingDirectory.md
+    Tutorial/Logging.md
+    Tutorial/Debugging.md
+    
 
 .. toctree::
     :maxdepth: 2
@@ -30,8 +49,8 @@
     :glob:
     :titlesonly:
 
-    CommonPatterns/*
-
+    CommonPatterns/CreatingObjects.md
+    CommonPatterns/SpecializingConfiguration.md
 
 .. toctree::
     :maxdepth: 2
@@ -39,8 +58,10 @@
     :glob:
     :titlesonly:
 
-    ConfiguringHydra/*
-
+    ConfiguringHydra/Introduction.md
+    ConfiguringHydra/HydraConfiguration.md
+    ConfiguringHydra/CustomizingLogging.md
+    ConfiguringHydra/CustomizingWorkingDirectoryPattern.md
 
 .. toctree::
     :maxdepth: 2
@@ -48,7 +69,9 @@
     :glob:
     :titlesonly:
 
-    Advanced/*
+    Advanced/ApplicationPackaging.md
+    Advanced/ConfigSearchPath.md
+    Advanced/HydraPlugin.md
 
 
 
